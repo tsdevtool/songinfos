@@ -1,4 +1,4 @@
-# Ứng Dụng Tìm Thông Tin Bài Hát 
+# Ứng Dụng Tìm Thông Tin Bài Hát
 
 ## Giới Thiệu
 
@@ -13,7 +13,6 @@
   - Lời bài hát
   - Tên nhạc sĩ
   - Liên kết tới các audio/video trên Youtube hoặc các trang nghe nhạc trực tuyến.
-  
 - **Trường hợp lỗi:**
   - Nếu tên bài hát không chính xác hoặc có lỗi đánh máy, hệ thống sẽ gợi ý bài hát gần đúng nhất.
 
@@ -25,7 +24,6 @@
   - Thông tin về sự nghiệp
   - Các bài hát, album nổi tiếng
   - Liên kết tới các audio/video trên Youtube hoặc các trang nghe nhạc trực tuyến.
-  
 - **Trường hợp lỗi:**
   - Nếu tên ca sĩ không chính xác hoặc không tìm thấy thông tin, hệ thống sẽ báo lỗi.
 
@@ -39,11 +37,10 @@
   - Nhận dữ liệu từ client.
   - Tìm kiếm và xử lý yêu cầu.
   - Trả kết quả lại cho client.
-  
 - **Client:**
   - Gửi yêu cầu tới server.
   - Hiển thị kết quả nhận được từ server (bao gồm lời bài hát, thông tin ca sĩ, link audio/video).
-  
+
 ### Mã Hóa Dữ Liệu
 
 Dữ liệu giữa client và server được mã hóa trước khi truyền đi để đảm bảo tính bảo mật. Các phương thức mã hóa đơn giản như Base64 hoặc AES có thể được sử dụng.
@@ -53,7 +50,6 @@ Dữ liệu giữa client và server được mã hóa trước khi truyền đi
 ### 1. Cài Đặt Server
 
 1. **Cài đặt Java**: Đảm bảo rằng máy tính của bạn đã cài đặt Java Development Kit (JDK). Bạn có thể tải về từ [Oracle JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
-   
 2. **Chạy Server**:
    - Clone dự án về máy:
      ```bash
@@ -71,22 +67,21 @@ Dữ liệu giữa client và server được mã hóa trước khi truyền đi
 
 ### 2. Cài Đặt Client
 
-1. **Cài Đặt Java**: Đảm bảo rằng máy tính của bạn đã cài đặt Java Development Kit (JDK).
+**Chạy Client**:
 
-2. **Chạy Client**:
-   - Clone dự án về máy:
-     ```bash
-     songinfos
-     ```
-   - Di chuyển vào thư mục dự án:
-     ```bash
-     cd app
-     ```
-   - Biên dịch và chạy client:
-     ```bash
-     javac Client.java
-     java Client
-     ```
+- Clone dự án về máy:
+  ```bash
+  songinfos
+  ```
+- Di chuyển vào thư mục dự án:
+  ```bash
+  cd client
+  ```
+- Biên dịch và chạy client:
+  ```bash
+  npm install
+  npm start
+  ```
 
 ### 3. Sử Dụng Ứng Dụng
 
@@ -97,8 +92,8 @@ Dữ liệu giữa client và server được mã hóa trước khi truyền đi
 ## Mã Nguồn
 
 - **Server.java**: Chứa mã nguồn của server, xử lý yêu cầu và tìm kiếm thông tin.
-- **Client.java**: Chứa mã nguồn của client, gửi yêu cầu và hiển thị kết quả.
-  
+<!-- - **Client.java**: Chứa mã nguồn của client, gửi yêu cầu và hiển thị kết quả. -->
+
 ## Các Công Nghệ Sử Dụng
 
 - **Java Socket**: Sử dụng Java Sockets để tạo mô hình client-server.
