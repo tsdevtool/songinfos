@@ -1,4 +1,4 @@
-# Ứng Dụng Tìm Thông Tin Bài Hát - Java Socket
+# Ứng Dụng Tìm Thông Tin Bài Hát 
 
 ## Giới Thiệu
 
