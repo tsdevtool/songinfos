@@ -1,0 +1,2 @@
+Trong node.js với express.js, Controller là nơi xử lý logic ứng dụng, thường được tổ chức để quản lý và xử lý các yêu cầu HTTP (GET, POST, PUT, DELETE,...). 
+
