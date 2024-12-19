@@ -7,12 +7,16 @@ import songRoutes from "./routes/song.route.js";
 import albumRoutes from "./routes/album.route.js";
 import statsRoutes from "./routes/stats.route.js";
 import { connectDB } from "./lib/db.js";
+import { clerkMiddleware } from "@clerk/express";
+
 dotenv.config();
 const PORT = process.env.PORT;
 
 const app = express();
 
 app.use(express.json()); //to parse req.body
+
+app.use(clerkMiddleware()); // this will add auth to req obj => req.auth
 
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);

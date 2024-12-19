@@ -1,0 +1,5 @@
+Middleware trong express.js là các hàm trung gian được sử dụng để xử lý yêu cầu (request) và phản hồi (response) trước khi chúng đến với route hoặc gửi về client. Thường được dùng trong các nhiệm vụ như:
+- Xác thực
+- Xử lý lỗi
+- Ghi log
+- Phân tích dữ liệu từ yêu cầu
