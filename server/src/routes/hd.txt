@@ -1,0 +1,1 @@
+Trong này có rất nhiều phương thức các HTTP cần được xử lý như PUT, GET, DELETE,... và vì vậy không thể để các chức năng này trong route được điều này dẫn tới khó quản lý nên thay vì đặt nó vào trong route thì ta sẽ đặt nó vào trong controller
