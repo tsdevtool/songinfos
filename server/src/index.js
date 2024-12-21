@@ -39,17 +39,17 @@ app.use("/api/stats", statsRoutes);
 
 //Error handler
 app.use((err, req, res, next) => {
-  res
-    .status(500)
-    .json({
-      message:
-        process.env.NODE_ENV === "production"
-          ? "Interval server error"
-          : err.message,
-    });
+  res.status(500).json({
+    message:
+      process.env.NODE_ENV === "production"
+        ? "Interval server error"
+        : err.message,
+  });
 });
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   connectDB();
 });
+
+//todo: socket.io
