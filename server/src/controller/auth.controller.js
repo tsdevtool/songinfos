@@ -3,7 +3,6 @@ import { User } from "../models/user.model.js";
 export const authCallback = async (req, res, next) => {
   try {
     const { id, firstName, lastName, imageUrl } = req.body;
-
     //Kiem tra xem nguoi dung da co chua
     const user = await User.findOne({ clerkId: id });
 
@@ -11,7 +10,7 @@ export const authCallback = async (req, res, next) => {
       //Tao moi user
       await User.create({
         clerkId: id,
-        fullName: `${firstName} ${lastName}`,
+        fullName: `${firstName || ""} ${lastName || ""}`.trim(),
         imageUrl,
       });
     }
