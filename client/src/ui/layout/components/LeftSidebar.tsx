@@ -2,11 +2,12 @@ import PlayListSkeleton from "@/ui/skeletons/PlayListSkeleton";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { SignedIn } from "@clerk/clerk-react";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
+
 import { HomeIcon, Library, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useMusicStore } from "@/ui/stores/useMusicStore";
 import { useEffect } from "react";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const LeftSidebar = () => {
   //data fetching
