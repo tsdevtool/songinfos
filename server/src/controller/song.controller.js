@@ -13,18 +13,22 @@ export const getAllSong = async (req, res, next) => {
 export const getFeaturedSongs = async (req, res, next) => {
   try {
     //Dung ham lay 6 bai hat ngau nhien - aggreagate
-    const songs = await Song.aggregate({
-      $sample: {
-        size: 6,
+    const songs = await Song.aggregate([
+      {
+        $sample: {
+          size: 6,
+        },
       },
-      $project: {
-        _id: 1,
-        title: 1,
-        artist: 1,
-        imageUrl: 1,
-        audioUrl: 1,
+      {
+        $project: {
+          _id: 1,
+          title: 1,
+          artist: 1,
+          imageUrl: 1,
+          audioUrl: 1,
+        },
       },
-    });
+    ]);
 
     res.json(songs);
   } catch (error) {
@@ -35,18 +39,22 @@ export const getFeaturedSongs = async (req, res, next) => {
 
 export const getMadeForYouSongs = async (req, res, next) => {
   try {
-    const songs = await Song.aggregate({
-      $sample: {
-        size: 4,
+    const songs = await Song.aggregate([
+      {
+        $sample: {
+          size: 4,
+        },
       },
-      $project: {
-        _id: 1,
-        title: 1,
-        artist: 1,
-        imageUrl: 1,
-        audioUrl: 1,
+      {
+        $project: {
+          _id: 1,
+          title: 1,
+          artist: 1,
+          imageUrl: 1,
+          audioUrl: 1,
+        },
       },
-    });
+    ]);
 
     res.json(songs);
   } catch (error) {
@@ -57,18 +65,22 @@ export const getMadeForYouSongs = async (req, res, next) => {
 
 export const getTrendingSongs = async (req, res, next) => {
   try {
-    const songs = await Song.aggregate({
-      $sample: {
-        size: 4,
+    const songs = await Song.aggregate([
+      {
+        $sample: {
+          size: 4,
+        },
       },
-      $project: {
-        _id: 1,
-        title: 1,
-        artist: 1,
-        imageUrl: 1,
-        audioUrl: 1,
+      {
+        $project: {
+          _id: 1,
+          title: 1,
+          artist: 1,
+          imageUrl: 1,
+          audioUrl: 1,
+        },
       },
-    });
+    ]);
 
     res.json(songs);
   } catch (error) {
