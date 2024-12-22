@@ -1,6 +1,6 @@
 import { useAuth } from "@clerk/clerk-react";
 import React, { useEffect, useState } from "react";
-import { axiosInstance } from "../lib/aixos";
+import { axiosInstance } from "../../lib/aixos";
 import { Loader } from "lucide-react";
 
 const updateApiToken = (token: string | null) => {
