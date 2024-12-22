@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { useMusicStore } from "@/ui/stores/useMusicStore";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
+
 import { Clock, Play } from "lucide-react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
