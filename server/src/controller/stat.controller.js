@@ -39,7 +39,7 @@ export const getStats = async (req, res, next) => {
       totalAlbums,
       totalSongs,
       totalUsers,
-      totalArtist: uniqueArtists[0]?.count || 0,
+      totalArtists: uniqueArtists[0]?.count || 0,
     });
   } catch (error) {
     next(error);
