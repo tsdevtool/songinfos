@@ -16,21 +16,28 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { axiosInstance } from "@/lib/aixos";
 import { useMusicStore } from "@/ui/stores/useMusicStore";
 
 import { PlusCircle, Upload } from "lucide-react";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 
+interface NewSong {
+  title: string;
+  artist: string;
+  album: string;
+  duration: string;
+}
 const AddSongDialog = () => {
   const { albums } = useMusicStore();
   const [songDialogOpen, setSongDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [newSong, setNewSong] = useState({
+  const [newSong, setNewSong] = useState<NewSong>({
     title: "",
     artist: "",
     album: "",
-    duration: 0,
+    duration: "0",
   });
 
   //
@@ -57,12 +64,33 @@ const AddSongDialog = () => {
       formData.append("artist", newSong.artist);
       formData.append("duration", newSong.duration);
       if (newSong.album && newSong.album !== "none") {
-        formData.append("album", newSong.album);
+        formData.append("albumId", newSong.album);
       }
       formData.append("audioFile", files.audio);
       formData.append("imageFile", files.image);
-    } catch (error) {
+
+      await axiosInstance.post("/api/admin/songs", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      setNewSong({
+        title: "",
+        artist: "",
+        album: "",
+        duration: "0",
+      });
+      setFiles({
+        audio: null,
+        image: null,
+      });
+
+      toast.success("Song added successfully");
+    } catch (error: any) {
       toast.error("Error adding song", error);
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -171,13 +199,15 @@ const AddSongDialog = () => {
 
           {/* Duration */}
           <div className="space-y-2">
-            <label className="text-sm font-medium">Duration</label>
+            <label className="text-sm font-medium">Duration(seconds)</label>
             <Input
+              type="number"
+              min={0}
               value={newSong.duration}
               onChange={(e) =>
                 setNewSong({
                   ...newSong,
-                  duration: parseInt(e.target.value) || 0,
+                  duration: e.target.value || "0",
                 })
               }
               className="bg-zinc-800 border-zinc-700"

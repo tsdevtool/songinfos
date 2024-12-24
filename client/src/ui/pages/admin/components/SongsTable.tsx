@@ -48,7 +48,7 @@ const SongsTable = () => {
             <TableCell className="w-[50px]">
               <img src={song.imageUrl} alt={song.title} />
             </TableCell>
-            <TableCell className="font-medium">{song.artist}</TableCell>
+            <TableCell className="font-medium">{song.title}</TableCell>
             <TableCell>{song.artist}</TableCell>
             {/* <TableCell>{formatDate(song.updatedAt.toString())}</TableCell> */}
             <TableCell>

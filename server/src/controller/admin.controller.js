@@ -62,7 +62,7 @@ export const deleteSong = async (req, res, next) => {
       });
     }
 
-    await Song.findOneAndDelete(id);
+    await Song.findByIdAndDelete(id);
 
     res.status(200).json({ message: "Song deleted successfully" });
   } catch (error) {
@@ -75,7 +75,7 @@ export const createAlbum = async (req, res, next) => {
   try {
     const { title, artist, releaseYear } = req.body;
 
-    const { imageFile } = req.file;
+    const { imageFile } = req.files;
     const imageUrl = await uploadToCloudinary(imageFile);
 
     const album = new Album({
