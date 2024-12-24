@@ -1,10 +1,10 @@
 import Topbar from "@/components/Topbar";
 import FeatureSections from "./components/FeatureSections";
-import { useMusicStore } from "@/ui/stores/useMusicStore";
 import { useEffect } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import SectionGrid from "./components/SectionGrid";
 import { usePlayerStore } from "@/ui/stores/usePlayerStore";
+import { useMusicStore } from "@/ui/stores/useMusicStore";
 
 const HomePage = () => {
   const {
