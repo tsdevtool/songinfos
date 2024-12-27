@@ -52,7 +52,7 @@ app.use("/api/songs", songRoutes);
 app.use("/api/albums", albumRoutes);
 app.use("/api/stats", statsRoutes);
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV !== "development") {
   app.use(express.static(path.join(__dirname, "../client/dist-react")));
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(dirname, "../frontend/dist-react/index.html"));
