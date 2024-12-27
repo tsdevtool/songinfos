@@ -74,7 +74,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/dist-react")));
   app.get("*", (req, res) => {
     res.sendFile(
-      path.resolve(dirname, "../client", "dist-react", "index.html")
+      path.resolve(__dirname, "../client", "dist-react", "index.html")
     );
   });
 }
@@ -86,7 +86,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({
     message:
       process.env.NODE_ENV === "production"
-        ? "Interval server error"
+        ? "Interval server error SOS"
         : err.message,
   });
 });
