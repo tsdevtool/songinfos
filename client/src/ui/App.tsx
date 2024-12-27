@@ -16,7 +16,9 @@ function App() {
         <Route
           path="/sso-callback"
           element={
-            <AuthenticateWithRedirectCallback signUpForceRedirectUrl={"/"} />
+            <AuthenticateWithRedirectCallback
+              signUpForceRedirectUrl={"/auth-callback"}
+            />
           }
         />
         <Route path="/auth-callback" element={<AuthCallbackPage />} />

@@ -55,26 +55,28 @@ app.use("/api/stats", statsRoutes);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/dist-react")));
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(dirname, "../frontend/dist-react/index.html"));
+    res.sendFile(
+      path.resolve(dirname, "../client", "dist-react", "index.html")
+    );
   });
 }
 
 //cron jobs
 //delete those files in every 1 hour
-const tempDir = path.join(process.cwd(), "mtp");
-cron.schedule("0 * * * *", () => {
-  if (fs.existsSync(tempDir)) {
-    fs.readdir(tempDir, (err, files) => {
-      if (err) {
-        console.log("error", err);
-        return;
-      }
-      for (const file of files) {
-        fs.unlink(path.join(tempDir, file), (err) => {});
-      }
-    });
-  }
-});
+// const tempDir = path.join(process.cwd(), "tmp");
+// cron.schedule("0 * * * *", () => {
+//   if (fs.existsSync(tempDir)) {
+//     fs.readdir(tempDir, (err, files) => {
+//       if (err) {
+//         console.log("error", err);
+//         return;
+//       }
+//       for (const file of files) {
+//         fs.unlink(path.join(tempDir, file), (err) => {});
+//       }
+//     });
+//   }
+// });
 
 //Error handler
 app.use((err, req, res, next) => {
