@@ -22,7 +22,8 @@ interface ChatStore {
 }
 
 //Khoi tao ket noi Websocket giua client va server bang thu vien socket.io
-const baseURL = "http://localhost:5000";
+const baseURL =
+  import.meta.env.MODE === "development" ? "http://localhost:5000" : "/";
 
 const socket = io(baseURL, {
   autoConnect: false, //only connect if user is authenticated
@@ -33,13 +34,13 @@ export const useChatStore = create<ChatStore>((set, get) => ({
   users: [],
   isLoading: true,
   error: null,
-  socket: null,
+  socket: socket,
   isConnected: false,
   onlineUsers: new Set(),
   userActivities: new Map(),
   messages: [],
   selectedUser: null,
-  setSelectedUser: (user) => ({ selectedUser: user }),
+  setSelectedUser: (user) => set({ selectedUser: user }),
 
   fetchUsers: async () => {
     try {
@@ -52,7 +53,7 @@ export const useChatStore = create<ChatStore>((set, get) => ({
     }
   },
 
-  initSocket: async (userId) => {
+  initSocket: (userId) => {
     //Kiem tra xem nguoi dung da ket noi voi server chua
     //Chua thi tiep tuc ket noi
     if (!get().isConnected) {
@@ -107,7 +108,7 @@ export const useChatStore = create<ChatStore>((set, get) => ({
     }
   },
 
-  disconnectedSocket: async () => {
+  disconnectedSocket: () => {
     if (get().isConnected) {
       socket.disconnect();
       set({ isConnected: false });
