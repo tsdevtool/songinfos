@@ -80,7 +80,7 @@ cron.schedule("0 * * * *", () => {
 app.use((err, req, res, next) => {
   res.status(500).json({
     message:
-      process.env.NODE_ENV === "production"
+      process.env.NODE_ENV !== "development"
         ? "Interval server error"
         : err.message,
   });
