@@ -20,7 +20,7 @@ const ChatPage = () => {
   const { user } = useUser();
   const { messages, selectedUser, fetchUsers, fetchMessages } = useChatStore();
 
-  const messageEndRef = useRef(null);
+  const messageEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (user) {
@@ -34,6 +34,11 @@ const ChatPage = () => {
     }
   }, [selectedUser, fetchMessages]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  }, [messages]);
   useEffect(() => {
     setTimeout(() => {
       messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
