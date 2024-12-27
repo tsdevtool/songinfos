@@ -12,10 +12,14 @@ import fileUpload from "express-fileupload";
 dotenv.config();
 import path from "path";
 import cors from "cors";
-
+import { initializeSocket } from "./lib/socket.js";
+import { createServer } from "http";
 const __dirname = path.resolve();
 const app = express();
 const PORT = process.env.PORT;
+
+const httpServer = createServer(app);
+initializeSocket(httpServer);
 
 app.use(
   cors({
@@ -55,7 +59,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   connectDB();
 });
