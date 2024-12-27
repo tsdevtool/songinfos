@@ -52,7 +52,7 @@ app.use("/api/songs", songRoutes);
 app.use("/api/albums", albumRoutes);
 app.use("/api/stats", statsRoutes);
 
-if (process.env.NODE_ENV !== "development") {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/dist-react")));
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(dirname, "../frontend/dist-react/index.html"));
@@ -80,7 +80,7 @@ cron.schedule("0 * * * *", () => {
 app.use((err, req, res, next) => {
   res.status(500).json({
     message:
-      process.env.NODE_ENV !== "development"
+      process.env.NODE_ENV === "production"
         ? "Interval server error"
         : err.message,
   });
