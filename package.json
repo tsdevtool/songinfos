@@ -1,0 +1,13 @@
+{
+  "name": "songinfos",
+  "version": "1.0.0",
+  "description": "Ứng dụng \"Tìm Thông Tin Bài Hát\" là một ứng dụng sử dụng Java Socket để tìm kiếm thông tin bài hát và ca sĩ. Người dùng có thể tra cứu thông tin bài hát (dựa vào tên bài hát) và thông tin ca sĩ (dựa vào tên ca sĩ) qua giao thức mạng (client-server). Server sẽ nhận yêu cầu từ client, xử lý yêu cầu và trả kết quả về cho client. Dữ liệu giữa client và server được mã hóa để đảm bảo tính bảo mật.",
+  "main": "index.js",
+  "scripts": {
+    "build":"npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start":"npm start --prefix backend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

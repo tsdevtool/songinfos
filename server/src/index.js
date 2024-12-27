@@ -10,10 +10,13 @@ import { connectDB } from "./lib/db.js";
 import { clerkMiddleware } from "@clerk/express";
 import fileUpload from "express-fileupload";
 dotenv.config();
-import path from "path";
+import path, { dirname } from "path";
 import cors from "cors";
 import { initializeSocket } from "./lib/socket.js";
 import { createServer } from "http";
+import cron from "node-cron";
+import fs from "fs";
+
 const __dirname = path.resolve();
 const app = express();
 const PORT = process.env.PORT;
@@ -48,6 +51,30 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/songs", songRoutes);
 app.use("/api/albums", albumRoutes);
 app.use("/api/stats", statsRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/dist-react")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(dirname, "../frontend/dist-react/index.html"));
+  });
+}
+
+//cron jobs
+//delete those files in every 1 hour
+const tempDir = path.join(process.cwd(), "mtp");
+cron.schedule("0 * * * *", () => {
+  if (fs.existsSync(tempDir)) {
+    fs.readdir(tempDir, (err, files) => {
+      if (err) {
+        console.log("error", err);
+        return;
+      }
+      for (const file of files) {
+        fs.unlink(path.join(tempDir, file), (err) => {});
+      }
+    });
+  }
+});
 
 //Error handler
 app.use((err, req, res, next) => {
