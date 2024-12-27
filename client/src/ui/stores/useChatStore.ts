@@ -33,13 +33,13 @@ export const useChatStore = create<ChatStore>((set, get) => ({
   users: [],
   isLoading: true,
   error: null,
-  socket: null,
+  socket: socket,
   isConnected: false,
   onlineUsers: new Set(),
   userActivities: new Map(),
   messages: [],
   selectedUser: null,
-  setSelectedUser: (user) => ({ selectedUser: user }),
+  setSelectedUser: (user) => set({ selectedUser: user }),
 
   fetchUsers: async () => {
     try {
